@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %} {{book_name}}{% endblock %}
+{% block content %}
+    <div class="container">
+        <div class="header">
+            <h1><a href="/books">Каталог</a></h1>
+        </div>
+        <div class="row">
+            <div class="book col-md-4">
+                <h2><a href="">{{book_name}}</a></h2>
+                <p>{{book_author}}</p>
+                <p>{{book_pub_date}}</p>
+            </div>
+
+            
+        </div>
+    </div>
+    <div class="row">
+    {% for page in pagi %}
+
+    {% if page.has_previous %}
+        <a href="?page={{ page.previous_page_number }}">rwarawr</a>
+    {% endif %}
+    <a class="button disabled" href="">{{page}}</a>
+    {% if page.has_next %}
+        <a href="?page={{ page.next_page_number }}">{{page}}</a>
+    {% endif %}
+
+    {% endfor %}
+
+{% endblock %}
